@@ -29,25 +29,35 @@ function App() {
   
   const quoteBoxRef = useRef(null)
 
+
+
   const handleGenerateQuote = async () => {
     setError("");
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:3000/api/generateText', {
-        topic: topic || " "
+      const response = await axios.post('https://quote-canvas-ai-backend.vercel.app/api/generateText', {
+        topic: topic || "inspiration"
       });
 
-      if (response.data.success) {
-        setQuote(response.data.data.text);
-        console.log(response.data.data.text);  // Log text directly
+      console.log('Full response:', response.data);
+
+      if (response.data.success && response.data.data.text) {  // Changed from quote to text
+        const generatedQuote = response.data.data.text;  // Changed from quote to text
+        console.log('Generated quote:', generatedQuote);
+        setQuote(generatedQuote);
       } else {
-        setError("Failed to generate quote.");
+        console.error('Invalid response format:', response.data);
+        throw new Error("Invalid response format from server");
       }
       
     } catch (error) {
-      console.error('Error:', error);
-      setError(error.response?.data?.message || "Failed to generate quote. Please try again or enter manually.");
+      console.error('Error generating quote:', error);
+      setError(
+        error.response?.data?.error || 
+        error.message || 
+        "Failed to generate quote. Please try again or enter manually."
+      );
     }
     
     setLoading(false);
