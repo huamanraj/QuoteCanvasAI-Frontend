@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to your CSS file */
+select option, select optgroup {
+    font-family: var(--preview-font, inherit);
+  }
+  
+  select option:checked {
+    font-weight: bold;
+  }
+  
+  .select-with-preview {
+    font-family: var(--preview-font, inherit);
+  }
