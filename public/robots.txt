@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://quotecanvasai.vercel.app/sitemap.xml

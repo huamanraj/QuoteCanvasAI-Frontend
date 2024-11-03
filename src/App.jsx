@@ -7,7 +7,7 @@ import { FaTwitter, FaLinkedin, FaGithub, FaGlobe } from 'react-icons/fa'
 import ColorPicker from './components/ColorPicker'
 import axios from 'axios';
 import logo from '../src/assets/icon.png'
-
+import { Helmet } from 'react-helmet-async';
 
 function App() {
   const [quote, setQuote] = useState("QuoteCanvas AI: Your go-to tool for creating stunning, AI-generated social media quotes with customizable styles. Designed for effortless styling, quick previews, and smooth downloads—all in a modern, responsive interface.")
@@ -88,6 +88,58 @@ function App() {
   }
 
   return (
+    <> 
+    <Helmet>
+    {/* Primary Meta Tags */}
+    <title>QuoteCanvas AI - Generate Inspiring Quotes On Images</title>
+    <meta name="title" content="QuoteCanvas AI- Generate Inspiring Quotes On Images" />
+    <meta name="description" content="Create beautiful, AI-generated quotes for any topic. Customize fonts, backgrounds, and share your unique quote images." />
+    
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://quotecanvasai.vercel.app/" />
+    <meta property="og:title" content="QuoteCanvas AI - Generate Inspiring Quotes" />
+    <meta property="og:description" content="Create beautiful, AI-generated quotes for any topic. Customize fonts, backgrounds, and download and share your unique quote images." />
+    
+
+    {/* Twitter */}
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://quotecanvasai.vercel.app/" />
+    <meta property="twitter:title" content="QuoteCanvas AI - Generate Inspiring Quotes" />
+    <meta property="twitter:description" content="Create beautiful, AI-generated quotes for any topic. Customize fonts, backgrounds, and download & share your unique quote images." />
+    
+
+    {/* Keywords */}
+    <meta name="keywords" content="quotes, AI quotes,quote image generator ai, inspirational quote image,quotes images about thankful, quote generator, inspirational quote generator, free ai quote generator, free, inspiration, motivation, quote maker" />
+
+    {/* Additional SEO tags */}
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="author" content="Aman Raj" />
+    
+    {/* Favicon */}
+    <link rel="icon" href={logo} />
+
+    <script type="application/ld+json">
+    {`
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Quote Canvas AI",
+        "description": "AI-powered quote generator and customization tool",
+        "url": "https://quotecanvasai.vercel.app/",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    `}
+  </script>
+</Helmet>
+
+
     <div className="min-h-screen bg-gray-900 text-gray-100">
       <header className="bg-gray-800 py-3 px-6 border-b border-gray-700">
         <div className="container mx-auto flex justify-between items-center">
@@ -340,6 +392,7 @@ function App() {
         </div>
       </main>
     </div>
+    </>
   )
 }
 
